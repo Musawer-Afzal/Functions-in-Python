@@ -182,3 +182,61 @@ print(type(square))
 
 x = square
 print(x(3))
+
+# Delete a function
+# del square
+# print(square(2)) # It will throw an error since square is deleted
+
+
+# Storing
+L = [1,2,3, square]
+print(L[3](2))
+
+# Is Function Mutable?
+s = (square)
+print(s(3)) # Sets will not allow Mutable Datatypes. Hence Function is Immutable
+
+# Returing the Function
+def f():
+    def x(a,b):
+        return a + b
+    return x # Returning the function "x"
+
+val = f()(3,4)
+print(val)
+
+
+# Function as Arguments
+def func_a():
+    print("Insode func_a")
+
+def func_b(z):
+    print("Inside func_b")
+    return z()
+
+print(func_b(func_a))
+
+
+# -----------------------------------------
+
+# Lambda Function
+# It is a small anonymous function
+# It is used to create a function in a single line
+# It can take any number of arguments, but can only have one ecpression
+
+# Syntax
+# lambda a,b: a + b
+
+# Example
+a = lambda x: x**2
+print(a(2))
+print(type(a))
+
+b = lambda x,y: x + y
+print(b(2,4))
+
+# Lambda function are used with higher order functions
+# check if a string has "a"
+x = "assffs"
+a = lambda x: a in x 
+print(a(x))
