@@ -237,6 +237,88 @@ print(b(2,4))
 
 # Lambda function are used with higher order functions
 # check if a string has "a"
-x = "assffs"
-a = lambda x: a in x 
+x = "abc"
+a = lambda x: "a" in x # Will give True
 print(a(x))
+
+s = lambda x: "a" in x
+print(s("Hello"))
+
+# Finding even and odd using Lambda function
+a = lambda x: "even" if x % 2 == 0 else "odd"
+print(a(10))
+print(a(11))
+
+# Higher Order Functions, A function that returns a function or recieve a function as a Input
+# Example
+def square(x):
+    return x**2
+
+def cube(x):
+    return x**3
+
+# This Transform is a Higher Order Function
+def transform(f, L):
+    output = []
+    for i in L:
+        # Since  f = lambda x: x**2, x is substituted for i, i: i**2
+        output.append(f(i))
+    print(output)
+
+L = [1,2,3,4,5]
+transform(square, L)
+transform(lambda x: x**2, L) # Here, f = lambda x: x**2
+
+
+# ------------------------------------------
+# Map Fucntion
+# Square the items of a list
+print(list(map(lambda x: x**2, [1,2,3,4,5])))
+
+# odd/even labelling of list
+L = [1,2,3,4,5]
+print(list(map(lambda x: "even" if x % 2 == 0 else "odd", L)))
+
+# Fetch names from a list of dictionaries
+users = [
+    {
+        "name": "Rahul",
+        "age": 45,
+        "gender": "Male"
+    },
+    {
+        "name": "Nitish",
+        "age": 33,
+        "gender": "Male"
+    },
+    {
+        "name": "Ankita",
+        "age": 50,
+        "gender": "Female"
+    }
+]
+
+print(list(map(lambda users: users["name"], users)))
+
+
+# ------------------------------------------
+# Filter
+# Number greater than 5
+L = [1,2,3,4,5,6,7,8,9,10]
+print(list(filter(lambda x: x > 5, L)))
+
+fruits = ["apple", "guava", "cherry"]
+print(list(filter(lambda fruits: fruits.startswith("a"), fruits)))
+
+
+# ------------------------------------------
+# Reduce
+# Sum of all items 
+import functools
+
+L = [1,2,3,4,5]
+print(functools.reduce(lambda x, y: x + y, L)) # x = 1 y = 2, x = 3(1+2) y = 3 and so on
+
+# Find min
+L = [11,34,56,45,22]
+print(functools.reduce(lambda x,y:x if x<y else y, L ))
